@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../features/core/components/Login";
-import Home from "../features/core/components/Home";
+import Login from "@/features/core/components/Login";
+import Home from "@/features/core/components/Home";
 
 const App = (): JSX.Element => {
 
