@@ -5,7 +5,7 @@ import {
     Typography,
     Button
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const Home: FC = () => {
     const navigate = useNavigate();

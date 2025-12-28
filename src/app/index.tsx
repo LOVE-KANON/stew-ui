@@ -1,17 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "@/features/core/components/Login";
-import Home from "@/features/core/components/Home";
+import { AppProvider } from './provider';
+import { AppRouter } from './router';
 
-const App = (): JSX.Element => {
-
+export const App = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/home" element={<Home />} />
-            </Routes>
-        </BrowserRouter>
+        <AppProvider>
+            <AppRouter />
+        </AppProvider>
     );
 };
-
-export default App
