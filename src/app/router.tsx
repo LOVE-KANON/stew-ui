@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { default as AppRoot } from './root';
-import Login from "@/features/core/components/Login";
-import Home from "@/features/core/components/Home";
+import Login from "@/features/auth/components/Login";
+import Home from "@/features/home/components/Home";
 
 export const createAppRouter = () =>
     createBrowserRouter([
