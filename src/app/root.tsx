@@ -1,18 +1,36 @@
 import { Outlet } from "react-router";
-import { AppBar } from "@mui/material";
-import { Header } from "@/features/core/shell/components";
+import { AppBar, Box, Drawer, Toolbar } from "@mui/material";
+import { Header, Sidebar } from "@/features/core/shell/components";
 
 export const ErrorBoundary = () => {
     return <div>Something went wrong!</div>;
 };
 
 const AppRoot = () => {
+    const drawerWidth = 240;
     return (
         <>
-            <AppBar position="sticky" sx={{ bgcolor: '#212529' }}>
                 <Header />
+            <AppBar position="fixed" sx={{ bgcolor: '#212529', zIndex: theme => theme.zIndex.drawer + 1 }}>
             </AppBar>
-            <Outlet />
+            <Drawer
+                variant="permanent"
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                        boxSizing: "bordar-box",
+                    }
+                }}
+            >
+                <Toolbar />
+                <Sidebar />
+            </Drawer>
+            <Box component="main" sx={{ ml: `${drawerWidth}px` }}>
+                <Toolbar />
+                <Outlet />
+            </Box>
         </>
     );
 };
