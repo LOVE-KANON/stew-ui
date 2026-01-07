@@ -6,15 +6,12 @@ import {
     TextField,
     Button,
 } from "@mui/material";
-import { useNavigate } from "react-router";
+import { useLogin } from "@/features/auth/hooks/useLogin";
 
 const Login: FC = () => {
 
-    const navigate = useNavigate();
-    
-    const handleLogin = (): void => {
-        navigate("/home");
-    }
+    const loginState = useLogin();
+
     return (
         <Container maxWidth="sm">
             <Box sx={{ mt: 8 }}>
@@ -25,18 +22,22 @@ const Login: FC = () => {
                     fullWidth
                     label="User ID"
                     margin="normal"
+                    value={loginState.loginId}
+                    onChange={(e) => loginState.setLoginId(e.target.value)}
                 />
                 <TextField
                     fullWidth
                     label="Password"
                     type="password"
                     margin="normal"
+                    value={loginState.password}
+                    onChange={(e) => loginState.setPassword(e.target.value)}
                 />
                 <Button
                     fullWidth
                     variant="contained"
                     sx={{ mt: 2 }}
-                    onClick={handleLogin}
+                    onClick={loginState.login}
                 >
                     Login
                 </Button>
@@ -44,4 +45,5 @@ const Login: FC = () => {
         </Container>
     );
 };
+
 export default Login;
