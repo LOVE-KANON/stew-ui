@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
+import { loginApi } from "@/features/core/lib/api/loginApi";
 
 export const useLogin = () => {
     const [loginId, setLoginId] = React.useState("");
@@ -9,18 +10,10 @@ export const useLogin = () => {
     // バックエンド疎通 + ログイン処理
     const login = async (): Promise<void> => {
         try {
-            const response = await fetch("http://localhost:8080/api/core/usecase/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    userId: loginId,
-                    password,
-                }),
+            const result = await loginApi({
+                userId: loginId,
+                password,
             });
-
-            const result = await response.json();
             console.log("login result:", result);
 
             if (result.success) {
