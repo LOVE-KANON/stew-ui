@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { default as AppRoot } from './root';
-import Login from "@/features/auth/components/Login";
-import Home from "@/features/home/components/Home";
+import PageLogin from "@/features/auth/components/PageLogin";
+import PageHome from "@/features/home/components/PageHome";
 
 export const createAppRouter = () =>
     createBrowserRouter([
@@ -14,11 +14,11 @@ export const createAppRouter = () =>
             children: [
                 {
                     path: "/",
-                    element: <Login />,
+                    element: <PageLogin />,
                 },
                 {
                     path: "/home",
-                    element: <Home />,
+                    element: <PageHome />,
                 }
             ]
         }

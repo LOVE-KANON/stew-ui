@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import {
     Container,
     Box,
@@ -8,7 +7,7 @@ import {
 } from "@mui/material";
 import { useLogin } from "@/features/auth/hooks/useLogin";
 
-const Login: FC = () => {
+const PageLogin = () => {
 
     const loginState = useLogin();
 
@@ -46,4 +45,4 @@ const Login: FC = () => {
     );
 };
 
-export default Login;
+export default PageLogin;

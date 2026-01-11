@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import {
     Container,
     Box,
@@ -7,7 +6,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 
-const Home: FC = () => {
+const PageHome = () => {
     const navigate = useNavigate();
 
     return (
@@ -33,4 +32,4 @@ const Home: FC = () => {
     );
 };
 
-export default Home;
+export default PageHome;
