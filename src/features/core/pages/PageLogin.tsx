@@ -5,11 +5,11 @@ import {
     TextField,
     Button,
 } from "@mui/material";
-import { useLogin } from "@/features/auth/hooks/useLogin";
+import { usePageLogin } from "@/features/core/pages/hooks/usePageLogin";
 
 const PageLogin = () => {
 
-    const loginState = useLogin();
+    const pageState = usePageLogin();
 
     return (
         <Container maxWidth="sm">
@@ -21,22 +21,22 @@ const PageLogin = () => {
                     fullWidth
                     label="User ID"
                     margin="normal"
-                    value={loginState.loginId}
-                    onChange={(e) => loginState.setLoginId(e.target.value)}
+                    value={pageState.loginId}
+                    onChange={(e) => pageState.setLoginId(e.target.value)}
                 />
                 <TextField
                     fullWidth
                     label="Password"
                     type="password"
                     margin="normal"
-                    value={loginState.password}
-                    onChange={(e) => loginState.setPassword(e.target.value)}
+                    value={pageState.password}
+                    onChange={(e) => pageState.setPassword(e.target.value)}
                 />
                 <Button
                     fullWidth
                     variant="contained"
                     sx={{ mt: 2 }}
-                    onClick={loginState.login}
+                    onClick={pageState.login}
                 >
                     Login
                 </Button>

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useNavigate } from "react-router";
 import { loginApi } from "@/features/core/lib/api/loginApi";
 
-export const useLogin = () => {
+export const usePageLogin = () => {
     const [loginId, setLoginId] = React.useState("");
     const [password, setPassword] = React.useState("");
     const navigate = useNavigate();
