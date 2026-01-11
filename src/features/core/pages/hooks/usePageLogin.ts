@@ -1,16 +1,16 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
-import { loginApi } from "@/features/core/api/loginApi";
+import { useLoginService } from "@/features/core/services/useLoginService";
 
 export const usePageLogin = () => {
     const [loginId, setLoginId] = React.useState("");
     const [password, setPassword] = React.useState("");
     const navigate = useNavigate();
+    const loginService = useLoginService();
 
-    // バックエンド疎通 + ログイン処理
-    const login = async (): Promise<void> => {
+    const onClickLogin = async (): Promise<void> => {
         try {
-            const result = await loginApi({
+            const result = await loginService.login({
                 userId: loginId,
                 password,
             });
@@ -33,6 +33,6 @@ export const usePageLogin = () => {
         setLoginId,
         password,
         setPassword,
-        login,
+        onClickLogin,
     };
 };

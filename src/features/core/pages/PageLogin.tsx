@@ -36,7 +36,7 @@ const PageLogin = () => {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 2 }}
-                    onClick={pageState.login}
+                    onClick={pageState.onClickLogin}
                 >
                     Login
                 </Button>
