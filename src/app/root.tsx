@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import { AppBar, Box, Drawer, Toolbar } from "@mui/material";
-import { Header, Sidebar } from "@/features/core/shell/components";
+import { Header, Sidebar } from "@/features/core/components";
 
 export const ErrorBoundary = () => {
     return <div>Something went wrong!</div>;
