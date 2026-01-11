@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
-import { loginApi } from "@/features/core/lib/api/loginApi";
+import { loginApi } from "@/features/core/api/loginApi";
 
 export const usePageLogin = () => {
     const [loginId, setLoginId] = React.useState("");
