@@ -2,12 +2,9 @@ import {
     Container,
     Box,
     Typography,
-    Button
 } from "@mui/material";
-import { useNavigate } from "react-router";
 
 const PageHome = () => {
-    const navigate = useNavigate();
 
     return (
         <Container maxWidth="md">
@@ -20,13 +17,6 @@ const PageHome = () => {
                     ホーム画面（認証なし・仮）
                 </Typography>
     
-                <Button
-                    variant="outlined"
-                    sx={{ mt: 3 }}
-                    onClick={() => navigate("/")}
-                >
-                    Logout
-                </Button>
             </Box>
         </Container>
     );

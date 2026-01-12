@@ -36,7 +36,11 @@ export const Header = () => {
                 >
                     <MenuItem>Settings</MenuItem>
                     <MenuItem>Messages</MenuItem>
-                    <MenuItem>Sign out</MenuItem>
+                    <MenuItem
+                        onClick={pageState.onClickLogout}
+                    >
+                        ログアウト
+                    </MenuItem>
                 </Menu>
             </Toolbar>
         </>
