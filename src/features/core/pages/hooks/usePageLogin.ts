@@ -17,7 +17,6 @@ export const usePageLogin = () => {
             console.log("login result:", result);
 
             if (result.success) {
-                // 成功時は /home へ遷移
                 navigate("/home");
             } else {
                 alert(result.message);
