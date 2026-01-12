@@ -7,11 +7,13 @@ import {
     Box,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { useState } from "react";
 import { envConfig } from '@/config/env';
+import { useHeader } from "./hooks/useHeader";
 
 export const Header = () => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+    const pageState = useHeader();
+
     return (
         <>
             <Toolbar variant="dense">
@@ -23,14 +25,14 @@ export const Header = () => {
                 {/* ユーザメニューボタン */}
                 <IconButton
                     color="inherit"
-                    onClick={(e) => setAnchorEl(e.currentTarget)}
+                    onClick={(e) => pageState.setAnchorEl(e.currentTarget)}
                 >
                     <AccountCircle />
                 </IconButton>
                 <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={() => setAnchorEl(null)}
+                    anchorEl={pageState.anchorEl}
+                    open={Boolean(pageState.anchorEl)}
+                    onClose={() => pageState.setAnchorEl(null)}
                 >
                     <MenuItem>Settings</MenuItem>
                     <MenuItem>Messages</MenuItem>
