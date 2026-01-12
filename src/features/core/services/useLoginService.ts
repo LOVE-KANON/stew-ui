@@ -1,4 +1,5 @@
 import { loginApi } from "@/features/core/api/loginApi";
+import { logoutApi } from "@/features/core/api/logoutApi";
 
 export type LoginParams = {
     userId: string;
@@ -16,8 +17,14 @@ export const useLoginService = () => {
 
         return result;
     }
-    
+
+    const logout = async () => {
+        const result = await logoutApi()
+        return result;
+    }
+
     return {
         login,
+        logout,
     };
 };
