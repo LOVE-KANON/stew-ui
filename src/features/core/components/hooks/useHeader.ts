@@ -12,7 +12,7 @@ export const useHeader = () => {
             const result = await loginService.logout();
             console.log("logout result:", result);
             setAnchorEl(null);
-            navigate("/");
+            navigate("/core");
         } catch (e) {
             console.error(e);
             alert("通信エラー");

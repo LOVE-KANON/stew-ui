@@ -17,7 +17,7 @@ export const usePageLogin = () => {
             console.log("login result:", result);
 
             if (result.success) {
-                navigate("/home");
+                navigate("/core/home");
             } else {
                 alert(result.message);
             }
