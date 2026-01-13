@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { default as AppRoot } from './root';
-import PageLogin from "@/features/core/pages/PageLogin";
-import PageHome from "@/features/core/pages/PageHome";
+
+import { coreRoutes } from "@/features/core/routes"
 
 export const createAppRouter = () =>
     createBrowserRouter([
@@ -11,16 +11,8 @@ export const createAppRouter = () =>
             element: (
                 <AppRoot />
             ),
-            children: [
-                {
-                    path: "/",
-                    element: <PageLogin />,
-                },
-                {
-                    path: "/home",
-                    element: <PageHome />,
-                }
-            ]
+            children: []
+                .concat(coreRoutes),
         }
     ])
 
