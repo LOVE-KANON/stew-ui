@@ -20,7 +20,7 @@ const AppRoot = () => {
                     flexShrink: 0,
                     "& .MuiDrawer-paper": {
                         width: drawerWidth,
-                        boxSizing: "bordar-box",
+                        boxSizing: "border-box",
                     }
                 }}
             >
