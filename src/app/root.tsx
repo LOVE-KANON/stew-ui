@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import { AppBar, Box, Drawer, Toolbar } from "@mui/material";
 import { Header, Sidebar } from "@/features/core/components";
 
