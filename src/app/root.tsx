@@ -27,7 +27,13 @@ const AppRoot = () => {
                 <Toolbar />
                 <Sidebar />
             </Drawer>
-            <Box component="main" sx={{ ml: `${drawerWidth}px` }}>
+            <Box
+                component="main"
+                sx={{
+                    ml: `${drawerWidth}px`,
+                    px: { xs: 2, sm: 3, md: 4 },
+                }}
+            >
                 <Toolbar />
                 <Outlet />
             </Box>
