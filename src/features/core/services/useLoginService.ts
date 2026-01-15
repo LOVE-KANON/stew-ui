@@ -1,5 +1,5 @@
-import { loginApi } from "@/features/core/api/loginApi";
-import { logoutApi } from "@/features/core/api/logoutApi";
+import { loginApi } from "@/features/core/api/usecase/auth/loginApi";
+import { logoutApi } from "@/features/core/api/usecase/auth/logoutApi";
 
 export type LoginParams = {
     userId: string;

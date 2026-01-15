@@ -13,7 +13,7 @@ export type LoginResponse = {
 export const loginApi = async (
     req: LoginRequest
 ): Promise<LoginResponse> => {
-    return httpClient<LoginResponse>("/api/core/usecase/login", {
+    return httpClient<LoginResponse>("/api/core/usecase/auth/login", {
         method: "POST",
         body: req,
     });

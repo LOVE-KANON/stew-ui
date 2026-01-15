@@ -7,7 +7,7 @@ export type LogoutResponse = {
 
 export const logoutApi = async (
 ): Promise<LogoutResponse> => {
-    return httpClient<LogoutResponse>("/api/core/usecase/logout", {
+    return httpClient<LogoutResponse>("/api/core/usecase/auth/logout", {
         method: "POST",
         body: {},
     });
