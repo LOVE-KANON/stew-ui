@@ -14,7 +14,6 @@ export const usePageLogin = () => {
                 userId: loginId,
                 password,
             });
-            console.log("login result:", result);
 
             if (result.success) {
                 navigate("/core/home");

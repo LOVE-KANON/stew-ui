@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router-dom";
-import PageLogin from "./pages/PageLogin";
+import { Navigate } from "react-router-dom";
 import PageHome from "./pages/PageHome";
 
 export const coreRoutes: RouteObject = {
@@ -7,7 +7,7 @@ export const coreRoutes: RouteObject = {
     children: [
         {
             index: true,
-            element: <PageLogin />,
+            element: <Navigate to="home" replace />,
         },
         {
             path: "home",

@@ -1,5 +1,6 @@
 import { loginApi } from "@/features/core/api/usecase/auth/loginApi";
 import { logoutApi } from "@/features/core/api/usecase/auth/logoutApi";
+import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
 
 export type LoginParams = {
     userId: string;
@@ -7,21 +8,26 @@ export type LoginParams = {
 };
 
 export const useLoginService = () => {
+    const authenticatedUserService = useAuthenticatedUserService();
 
     const login = async (params: LoginParams) => {
         const result = await loginApi({
             userId: params.userId,
             password: params.password,
         });
-        console.log("login result:", result);
+
+        if (result.success) {
+            await authenticatedUserService.refresh();
+        }
 
         return result;
-    }
+    };
 
     const logout = async () => {
-        const result = await logoutApi()
+        const result = await logoutApi();
+        await authenticatedUserService.refresh();
         return result;
-    }
+    };
 
     return {
         login,

@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { AppBar, Box, Drawer, Toolbar } from "@mui/material";
 import { Header, Sidebar } from "@/features/core/components";
+import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
+import PageLogin from "@/features/core/pages/PageLogin";
 
 export const ErrorBoundary = () => {
     return <div>Something went wrong!</div>;
@@ -8,6 +10,15 @@ export const ErrorBoundary = () => {
 
 const AppRoot = () => {
     const drawerWidth = 240;
+    const authenticatedUserService = useAuthenticatedUserService();
+
+    if (authenticatedUserService.isLoading()) {
+        return null;
+    }
+    if (!authenticatedUserService.isAuthenticated()) {
+        return <PageLogin />;
+    }
+
     return (
         <>
                 <Header />
