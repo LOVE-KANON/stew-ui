@@ -15,38 +15,39 @@ const AppRoot = () => {
     if (authenticatedUserService.isLoading()) {
         return null;
     }
-    if (!authenticatedUserService.isAuthenticated()) {
-        return <PageLogin />;
-    }
 
     return (
         <>
-                <Header />
             <AppBar position="fixed" sx={{ bgcolor: '#212529', zIndex: theme => theme.zIndex.drawer + 1 }}>
+                <Header />
             </AppBar>
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    "& .MuiDrawer-paper": {
+
+            {authenticatedUserService.isAuthenticated() && (
+                <Drawer
+                    variant="permanent"
+                    sx={{
                         width: drawerWidth,
-                        boxSizing: "border-box",
-                    }
-                }}
-            >
-                <Toolbar />
-                <Sidebar />
-            </Drawer>
+                        flexShrink: 0,
+                        "& .MuiDrawer-paper": {
+                            width: drawerWidth,
+                            boxSizing: "border-box",
+                        },
+                    }}
+                >
+                    <Toolbar />
+                    <Sidebar />
+                </Drawer>
+            )}
+
             <Box
                 component="main"
                 sx={{
-                    ml: `${drawerWidth}px`,
+                    ml: authenticatedUserService.isAuthenticated() ? `${drawerWidth}px` : 0,
                     px: { xs: 2, sm: 3, md: 4 },
                 }}
             >
                 <Toolbar />
-                <Outlet />
+                {authenticatedUserService.isAuthenticated() ? <Outlet /> : <PageLogin />}
             </Box>
         </>
     );

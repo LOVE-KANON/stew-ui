@@ -23,25 +23,32 @@ export const Header = () => {
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 {/* ユーザメニューボタン */}
-                <IconButton
-                    color="inherit"
-                    onClick={(e) => pageState.setAnchorEl(e.currentTarget)}
-                >
-                    <AccountCircle />
-                </IconButton>
-                <Menu
-                    anchorEl={pageState.anchorEl}
-                    open={Boolean(pageState.anchorEl)}
-                    onClose={() => pageState.setAnchorEl(null)}
-                >
-                    <MenuItem>Settings</MenuItem>
-                    <MenuItem>Messages</MenuItem>
-                    <MenuItem
-                        onClick={pageState.onClickLogout}
-                    >
-                        ログアウト
-                    </MenuItem>
-                </Menu>
+                {pageState.isAuthenticated && (
+                    <>
+                        <IconButton
+                            color="inherit"
+                            onClick={(e) => pageState.setAnchorEl(e.currentTarget)}
+                        >
+                            <AccountCircle />
+                        </IconButton>
+
+                        <Menu
+                            anchorEl={pageState.anchorEl}
+                            open={Boolean(pageState.anchorEl)}
+                            onClose={() => pageState.setAnchorEl(null)}
+                        >
+                            <MenuItem disabled>
+                                {pageState.authenticatedUser?.userName}
+                            </MenuItem>
+                            <MenuItem>Settings</MenuItem>
+                            <MenuItem>Messages</MenuItem>
+                            <MenuItem onClick={pageState.onClickLogout}>
+                                ログアウト
+                            </MenuItem>
+                        </Menu>
+                    </>
+                )}
+
             </Toolbar>
         </>
     );
