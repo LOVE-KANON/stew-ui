@@ -14,7 +14,7 @@ export const useHeader = () => {
 
     const onClickLogout = async (): Promise<void> => {
         try {
-            const result = await loginService.logout();
+            await loginService.logout();
             setAnchorEl(null);
             navigate("/core");
         } catch (e) {
