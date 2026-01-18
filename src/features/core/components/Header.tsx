@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import {
     Toolbar,
     Typography,
@@ -40,7 +41,13 @@ export const Header = () => {
                             <MenuItem disabled>
                                 {pageState.authenticatedUser?.userName}
                             </MenuItem>
-                            <MenuItem>Settings</MenuItem>
+                            <MenuItem
+                                component={NavLink}
+                                to="/core/user"
+                                onClick={() => pageState.setAnchorEl(null)}
+                            >
+                                ユーザ設定
+                            </MenuItem>
                             <MenuItem>Messages</MenuItem>
                             <MenuItem onClick={pageState.onClickLogout}>
                                 ログアウト
