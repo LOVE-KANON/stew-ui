@@ -11,7 +11,7 @@ export const usePageLogin = () => {
     const onClickLogin = async (): Promise<void> => {
         try {
             const result = await loginService.login({
-                userId: loginId,
+                loginId,
                 password,
             });
 

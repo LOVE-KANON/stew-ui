@@ -19,7 +19,7 @@ const PageLogin = () => {
                 </Typography>
                 <TextField
                     fullWidth
-                    label="User ID"
+                    label="ログインID"
                     margin="normal"
                     value={pageState.loginId}
                     onChange={(e) => pageState.setLoginId(e.target.value)}

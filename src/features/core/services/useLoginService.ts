@@ -3,7 +3,7 @@ import { logoutApi } from "@/features/core/api/usecase/auth/logoutApi";
 import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
 
 export type LoginParams = {
-    userId: string;
+    loginId: string;
     password: string;
 };
 
@@ -12,7 +12,7 @@ export const useLoginService = () => {
 
     const login = async (params: LoginParams) => {
         const result = await loginApi({
-            userId: params.userId,
+            loginId: params.loginId,
             password: params.password,
         });
 

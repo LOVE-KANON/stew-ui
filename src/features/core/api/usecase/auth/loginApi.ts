@@ -1,7 +1,7 @@
 import { httpClient } from "@/features/core/lib/http/httpClient";
 
 export type LoginRequest = {
-    userId: string;
+    loginId: string;
     password: string;
 };
 
