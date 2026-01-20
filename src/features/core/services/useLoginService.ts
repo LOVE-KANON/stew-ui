@@ -17,7 +17,7 @@ export const useLoginService = () => {
         });
 
         if (result.success) {
-            await authenticatedUserService.refresh();
+            await authenticatedUserService.refetch();
         }
 
         return result;
@@ -25,7 +25,7 @@ export const useLoginService = () => {
 
     const logout = async () => {
         const result = await logoutApi();
-        await authenticatedUserService.refresh();
+        await authenticatedUserService.refetch();
         return result;
     };
 

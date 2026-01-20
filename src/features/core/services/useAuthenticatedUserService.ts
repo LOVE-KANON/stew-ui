@@ -32,8 +32,8 @@ export const useAuthenticatedUserService = () => {
         return query.isError;
     };
 
-    const refresh = async () => {
-        await query.refetch();
+    const refetch = () => {
+        query.refetch();
     };
 
     return {
@@ -41,6 +41,6 @@ export const useAuthenticatedUserService = () => {
         isAuthenticated,
         isLoading,
         isError,
-        refresh,
+        refetch,
     };
 };
