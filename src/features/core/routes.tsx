@@ -1,5 +1,6 @@
 import type { RouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
 import PageHome from "./pages/PageHome";
 import PageUserDetails from "./pages/PageUserDetails";
 
@@ -15,8 +16,18 @@ export const coreRoutes: RouteObject = {
             element: <PageHome />,
         },
         {
-            path: "user",
-            element: <PageUserDetails />,
+            path: "maintenance",
+            children: [
+                {
+                    path: "user",
+                    children: [
+                        {
+                            path: "edit/:userId",
+                            element: <PageUserDetails />,
+                        },
+                    ],
+                },
+            ],
         },
     ],
 };

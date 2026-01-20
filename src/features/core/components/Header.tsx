@@ -43,10 +43,10 @@ export const Header = () => {
                             </MenuItem>
                             <MenuItem
                                 component={NavLink}
-                                to="/core/user"
+                                to="/core/maintenance/user/edit/self"
                                 onClick={() => pageState.setAnchorEl(null)}
                             >
-                                ユーザ設定
+                                ユーザ情報修正
                             </MenuItem>
                             <MenuItem>Messages</MenuItem>
                             <MenuItem onClick={pageState.onClickLogout}>
