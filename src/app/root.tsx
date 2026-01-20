@@ -12,7 +12,7 @@ const AppRoot = () => {
     const drawerWidth = 240;
     const authenticatedUserService = useAuthenticatedUserService();
 
-    if (authenticatedUserService.isLoading()) {
+    if (authenticatedUserService.isLoading) {
         return null;
     }
 
@@ -22,7 +22,7 @@ const AppRoot = () => {
                 <Header />
             </AppBar>
 
-            {authenticatedUserService.isAuthenticated() && (
+            {authenticatedUserService.isAuthenticated && (
                 <Drawer
                     variant="permanent"
                     sx={{
@@ -42,12 +42,12 @@ const AppRoot = () => {
             <Box
                 component="main"
                 sx={{
-                    ml: authenticatedUserService.isAuthenticated() ? `${drawerWidth}px` : 0,
+                    ml: authenticatedUserService.isAuthenticated ? `${drawerWidth}px` : 0,
                     px: { xs: 2, sm: 3, md: 4 },
                 }}
             >
                 <Toolbar />
-                {authenticatedUserService.isAuthenticated() ? <Outlet /> : <PageLogin />}
+                {authenticatedUserService.isAuthenticated ? <Outlet /> : <PageLogin />}
             </Box>
         </>
     );

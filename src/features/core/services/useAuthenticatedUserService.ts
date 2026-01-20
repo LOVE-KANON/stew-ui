@@ -7,40 +7,22 @@ export const useAuthenticatedUserService = () => {
         queryKey: ["authenticatedUser"],
         queryFn: getAuthenticatedUserApi,
         retry: false,
+        select: (data): AuthenticatedUser | undefined => {
+            if (!data.userId) {
+                return undefined;
+            }
+            return {
+                userId: data.userId,
+                userName: data.userName,
+            };
+        },
     });
 
-    const getAuthenticatedUser = (): AuthenticatedUser | undefined => {
-        if (!query.data?.userId) {
-            return undefined;
-        }
-
-        return {
-            userId: query.data.userId,
-            userName: query.data.userName,
-        };
-    };
-
-    const isAuthenticated = () => {
-        return !!getAuthenticatedUser();
-    };
-
-    const isLoading = () => {
-        return query.isLoading;
-    };
-
-    const isError = () => {
-        return query.isError;
-    };
-
-    const refetch = () => {
-        query.refetch();
-    };
-
     return {
-        getAuthenticatedUser,
-        isAuthenticated,
-        isLoading,
-        isError,
-        refetch,
+        authenticatedUser: query.data,
+        isAuthenticated: !!query.data,
+        isLoading: query.isLoading,
+        isError: query.isError,
+        refetch: query.refetch,
     };
 };

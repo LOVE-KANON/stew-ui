@@ -9,9 +9,6 @@ export const useHeader = () => {
     const loginService = useLoginService();
     const authenticatedUserService = useAuthenticatedUserService();
 
-    const authenticatedUser = authenticatedUserService.getAuthenticatedUser();
-    const isAuthenticated = authenticatedUserService.isAuthenticated();
-
     const onClickLogout = async (): Promise<void> => {
         try {
             await loginService.logout();
@@ -26,8 +23,8 @@ export const useHeader = () => {
     return {
         anchorEl,
         setAnchorEl,
-        authenticatedUser,
-        isAuthenticated,
+        authenticatedUser: authenticatedUserService.authenticatedUser,
+        isAuthenticated: authenticatedUserService.isAuthenticated,
         onClickLogout,
     };
 };
