@@ -19,8 +19,8 @@ export const usePageUserDetails = () => {
     const params = useParams();
     const authenticatedUserService = useAuthenticatedUserService();
 
-    const [user, setUser] = useState<UserDetails | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState<UserDetails | null>(null);
+    const [loading, setLoading] = useState(false);
 
     const userId =
         params.userId === "self"
@@ -35,16 +35,16 @@ export const usePageUserDetails = () => {
         const load = async () => {
             setLoading(true);
             const result = await getMaxSeqUserByUserIdApi({ userId });
-            setUser({
-                userId: result.userId ? result.userId : "",
-                userSeq: result.userSeq ? result.userSeq : "",
-                sei: result.sei ? result.sei : "",
-                mei: result.mei ? result.mei : "",
-                mailAddress: result.mailAddress ? result.mailAddress : "",
-                password: result.password ? result.password : "",
-                joinedDate: result.joinedDate ? result.joinedDate : "",
-                retiredDate: result.retiredDate ? result.retiredDate : "",
-                position: result.position ? result.position : "",
+            setData({
+                userId: result.userId ?? "",
+                userSeq: result.userSeq ?? "",
+                sei: result.sei ?? "",
+                mei: result.mei ?? "",
+                mailAddress: result.mailAddress ?? "",
+                password: result.password ?? "",
+                joinedDate: result.joinedDate ?? "",
+                retiredDate: result.retiredDate ?? "",
+                position: result.position ?? "",
             });
             setLoading(false);
         };
@@ -53,7 +53,7 @@ export const usePageUserDetails = () => {
     }, [userId, authenticatedUserService.isLoading]);
 
     return {
-        user,
+        data,
         loading,
     };
 };

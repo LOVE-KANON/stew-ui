@@ -14,7 +14,7 @@ const PageUserDetails = () => {
         return <div>Loading...</div>;
     }
 
-    if (!pageState.user) {
+    if (!pageState.data) {
         return null;
     }
 
@@ -25,7 +25,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="userId"
-                        value={pageState.user.userId}
+                        value={pageState.data.userId}
                         fullWidth
                         InputProps={{ readOnly: true }}
                         variant="outlined"
@@ -39,7 +39,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="userSeq"
-                        value={pageState.user.userSeq}
+                        value={pageState.data.userSeq}
                         fullWidth
                         InputProps={{ readOnly: true }}
                         variant="outlined"
@@ -53,7 +53,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="sei"
-                        value={pageState.user.sei}
+                        value={pageState.data.sei}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -66,7 +66,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="mei"
-                        value={pageState.user.mei}
+                        value={pageState.data.mei}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -79,7 +79,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="mailAddress"
-                        value={pageState.user.mailAddress}
+                        value={pageState.data.mailAddress}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -92,7 +92,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="password"
-                        value={pageState.user.password}
+                        value={pageState.data.password}
                         type="password"
                         fullWidth
                         variant="outlined"
@@ -106,7 +106,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="joinedDate"
-                        value={pageState.user.joinedDate}
+                        value={pageState.data.joinedDate}
                         fullWidth
                         InputProps={{ readOnly: true }}
                         variant="outlined"
@@ -120,7 +120,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="retiredDate"
-                        value={pageState.user.retiredDate}
+                        value={pageState.data.retiredDate}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -133,7 +133,7 @@ const PageUserDetails = () => {
                 <Box sx={{ maxWidth: 360 }}>
                     <TextField
                         name="position"
-                        value={pageState.user.position}
+                        value={pageState.data.position}
                         fullWidth
                         variant="outlined"
                         size="small"
