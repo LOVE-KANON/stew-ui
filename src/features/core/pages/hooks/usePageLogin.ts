@@ -14,18 +14,16 @@ export const usePageLogin = () => {
                 loginId,
                 password,
             });
-
-            if (result.success) {
-                navigate("/core/home");
-            } else {
-                alert(result.message);
+            if (result.status === 401) {
+                alert(result.body?.messages[0].message);
+                return;
             }
-        } catch (e) {
-            console.error(e);
+            navigate("/core/home");
+        } catch {
             alert("通信エラー");
         }
     };
-    
+
     return {
         loginId,
         setLoginId,

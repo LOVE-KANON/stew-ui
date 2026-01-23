@@ -1,4 +1,4 @@
 export type AuthenticatedUser = {
-    userId: string;
-    userName: string;
+    userId?: string;
+    userName?: string;
 };

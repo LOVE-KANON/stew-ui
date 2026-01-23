@@ -7,13 +7,13 @@ export const useAuthenticatedUserService = () => {
         queryKey: ["authenticatedUser"],
         queryFn: getAuthenticatedUserApi,
         retry: false,
-        select: (data): AuthenticatedUser | undefined => {
-            if (!data.userId) {
+        select: (result): AuthenticatedUser | undefined => {
+            if (result.status === 401) {
                 return undefined;
             }
             return {
-                userId: data.userId,
-                userName: data.userName,
+                userId: result.body?.detail?.userId,
+                userName: result.body?.detail?.userName,
             };
         },
     });

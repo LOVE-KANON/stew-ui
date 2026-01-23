@@ -15,11 +15,7 @@ export const useLoginService = () => {
             loginId: params.loginId,
             password: params.password,
         });
-
-        if (result.success) {
-            await authenticatedUserService.refetch();
-        }
-
+        await authenticatedUserService.refetch();
         return result;
     };
 

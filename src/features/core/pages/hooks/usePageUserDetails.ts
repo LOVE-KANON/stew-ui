@@ -36,15 +36,15 @@ export const usePageUserDetails = () => {
             setLoading(true);
             const result = await getMaxSeqUserByUserIdApi({ userId });
             setData({
-                userId: result.userId ?? "",
-                userSeq: result.userSeq ?? "",
-                sei: result.sei ?? "",
-                mei: result.mei ?? "",
-                mailAddress: result.mailAddress ?? "",
-                password: result.password ?? "",
-                joinedDate: result.joinedDate ?? "",
-                retiredDate: result.retiredDate ?? "",
-                position: result.position ?? "",
+                userId: result.body?.detail?.userId ?? "",
+                userSeq: result.body?.detail?.userSeq ?? "",
+                sei: result.body?.detail?.sei ?? "",
+                mei: result.body?.detail?.mei ?? "",
+                mailAddress: result.body?.detail?.mailAddress ?? "",
+                password: result.body?.detail?.password ?? "",
+                joinedDate: result.body?.detail?.joinedDate ?? "",
+                retiredDate: result.body?.detail?.retiredDate ?? "",
+                position: result.body?.detail?.position ?? "",
             });
             setLoading(false);
         };

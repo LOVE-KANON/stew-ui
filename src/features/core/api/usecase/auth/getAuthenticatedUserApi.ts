@@ -1,4 +1,5 @@
 import { httpClient } from "@/features/core/lib/http/httpClient";
+import type { HttpResult } from "@/features/core/lib/http/httpClient";
 
 export type GetAuthenticatedUserResponse = {
     userId: string
@@ -6,6 +7,6 @@ export type GetAuthenticatedUserResponse = {
 };
 
 export const getAuthenticatedUserApi = async (
-): Promise<GetAuthenticatedUserResponse> => {
+): Promise<HttpResult<GetAuthenticatedUserResponse>> => {
     return httpClient<GetAuthenticatedUserResponse>("/api/core/usecase/auth/getAuthenticatedUser");
 };

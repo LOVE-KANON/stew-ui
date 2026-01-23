@@ -28,10 +28,25 @@ const buildQueryString = (
     return qs ? `?${qs}` : "";
 };
 
+export type Message = {
+    level: string;
+    message: string;
+};
+
+export type ApiResponse<T> = {
+    messages: Message[];
+    detail: T | null;
+};
+
+export type HttpResult<T> = {
+    status: number;
+    body: ApiResponse<T> | null;
+};
+
 export const httpClient = async <T>(
     path: string,
     options: RequestOptions = {}
-): Promise<T> => {
+): Promise<HttpResult<T>> => {
     const method: HttpMethod = options.method ?? "GET";
     const queryString = method === "GET" ? buildQueryString(options.params) : "";
 
@@ -48,10 +63,12 @@ export const httpClient = async <T>(
         credentials: "include",
     });
 
-    if (!response.ok) {
-        // エラー処理
-        throw new Error(`HTTP Error: ${response.status}`);
-    }
+    const contentType = response.headers.get("content-type");
+    const isJson = contentType?.includes("application/json");
+    const body = isJson ? await response.json() : null;
 
-    return response.json();
+    return {
+        status: response.status,
+        body,
+    };
 };
