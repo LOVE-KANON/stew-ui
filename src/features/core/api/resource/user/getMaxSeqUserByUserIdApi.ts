@@ -7,13 +7,13 @@ export type GetMaxSeqUserByUserIdRequest = {
 
 export type GetMaxSeqUserByUserIdResponse = {
     userId: string;
-    userSeq: string;
+    userSeq: number;
+    joinedDate: string;
+    retiredDate: string;
     sei: string;
     mei: string;
     mailAddress: string;
     password: string;
-    joinedDate: string;
-    retiredDate: string;
     position: string;
 };
 

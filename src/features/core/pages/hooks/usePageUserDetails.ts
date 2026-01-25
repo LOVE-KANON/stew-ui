@@ -6,12 +6,12 @@ import { getMaxSeqUserByUserIdApi } from "@/features/core/api/resource/user/getM
 type UserDetails = {
     userId: string;
     userSeq: string;
+    joinedDate: string;
+    retiredDate: string;
     sei: string;
     mei: string;
     mailAddress: string;
     password: string;
-    joinedDate: string;
-    retiredDate: string;
     position: string;
 };
 
@@ -38,12 +38,12 @@ export const usePageUserDetails = () => {
             setData({
                 userId: result.body?.detail?.userId ?? "",
                 userSeq: result.body?.detail?.userSeq ?? "",
+                joinedDate: result.body?.detail?.joinedDate ?? "",
+                retiredDate: result.body?.detail?.retiredDate ?? "",
                 sei: result.body?.detail?.sei ?? "",
                 mei: result.body?.detail?.mei ?? "",
                 mailAddress: result.body?.detail?.mailAddress ?? "",
                 password: result.body?.detail?.password ?? "",
-                joinedDate: result.body?.detail?.joinedDate ?? "",
-                retiredDate: result.body?.detail?.retiredDate ?? "",
                 position: result.body?.detail?.position ?? "",
             });
             setLoading(false);
