@@ -15,6 +15,7 @@ export type GetMaxSeqUserByUserIdResponse = {
     mailAddress: string;
     password: string;
     position: string;
+    version: number;
 };
 
 export const getMaxSeqUserByUserIdApi = async (

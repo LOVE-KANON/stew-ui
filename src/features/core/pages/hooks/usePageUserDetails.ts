@@ -13,6 +13,7 @@ type UserDetails = {
     mailAddress: string;
     password: string;
     position: string;
+    version: number;
 };
 
 export const usePageUserDetails = () => {
@@ -45,6 +46,7 @@ export const usePageUserDetails = () => {
                 mailAddress: result.body?.detail?.mailAddress ?? "",
                 password: result.body?.detail?.password ?? "",
                 position: result.body?.detail?.position ?? "",
+                version: result.body?.detail?.version ?? "",
             });
             setLoading(false);
         };
