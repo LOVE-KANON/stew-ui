@@ -24,11 +24,6 @@ export const usePageUserDetails = () => {
     const [data, setData] = useState<UserDetails | null>(null);
     const [loading, setLoading] = useState(false);
 
-    const userId =
-        params.userId === "self"
-        ? authenticatedUserService.authenticatedUser?.userId
-        : params.userId;
-
     const onClickUpdate = async () => {
         setLoading(true);
         const result = await updateApi({
@@ -50,6 +45,11 @@ export const usePageUserDetails = () => {
     }
 
     useEffect(() => {
+        const userId =
+            params.userId === "self"
+                ? authenticatedUserService.authenticatedUser?.userId
+                : params.userId;
+
         if (!userId || authenticatedUserService.isLoading) {
             return;
         }
@@ -73,7 +73,7 @@ export const usePageUserDetails = () => {
         };
 
         load();
-    }, [userId, authenticatedUserService.isLoading]);
+    }, [params.userId, authenticatedUserService.authenticatedUser?.userId, authenticatedUserService.isLoading]);
 
     return {
         data,
