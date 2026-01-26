@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
 import { getMaxSeqUserByUserIdApi } from "@/features/core/api/resource/user/getMaxSeqUserByUserIdApi";
+import { updateApi } from "@/features/core/api/resource/user/updateApi";
 
 type UserDetails = {
     userId: string;
@@ -27,6 +28,26 @@ export const usePageUserDetails = () => {
         params.userId === "self"
         ? authenticatedUserService.authenticatedUser?.userId
         : params.userId;
+
+    const onClickUpdate = async () => {
+        setLoading(true);
+        const result = await updateApi({
+            userId: data.userId,
+            userSeq: data.userSeq,
+            joinedDate: data.joinedDate,
+            retiredDate: data.retiredDate,
+            sei: data.sei,
+            mei: data.mei,
+            mailAddress: data.mailAddress,
+            password: data.password,
+            position: data.position,
+            version: data.version,
+        });
+        setLoading(false);
+        if (result.status === 409) {
+            return;
+        }
+    }
 
     useEffect(() => {
         if (!userId || authenticatedUserService.isLoading) {
@@ -57,5 +78,6 @@ export const usePageUserDetails = () => {
     return {
         data,
         loading,
+        onClickUpdate,
     };
 };

@@ -1,4 +1,5 @@
 import {
+    Button,
     Box,
     Grid,
     TextField,
@@ -138,6 +139,24 @@ const PageUserDetails = () => {
                         variant="outlined"
                         size="small"
                     />
+                </Box>
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        mt: 3,
+                    }}
+                >
+                    <Button
+                        variant="contained"
+                        sx={{ backgroundColor: "#198754" }}
+                        onClick={pageState.onClickUpdate}
+                    >
+                        更新
+                    </Button>
                 </Box>
             </Grid>
         </Grid>
