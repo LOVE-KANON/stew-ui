@@ -25,6 +25,8 @@ export const usePageUserDetails = () => {
     const [loading, setLoading] = useState(false);
 
     const onClickUpdate = async () => {
+        if (!data) return;
+
         setLoading(true);
         const result = await updateApi({
             userId: data.userId,
@@ -38,10 +40,24 @@ export const usePageUserDetails = () => {
             position: data.position,
             version: data.version,
         });
-        setLoading(false);
         if (result.status === 409) {
+            setLoading(false);
             return;
         }
+        const getResult = await getMaxSeqUserByUserIdApi({ userId: data.userId });
+        setData({
+            userId: getResult.body?.detail?.userId ?? "",
+            userSeq: getResult.body?.detail?.userSeq ?? "",
+            joinedDate: getResult.body?.detail?.joinedDate ?? "",
+            retiredDate: getResult.body?.detail?.retiredDate ?? "",
+            sei: getResult.body?.detail?.sei ?? "",
+            mei: getResult.body?.detail?.mei ?? "",
+            mailAddress: getResult.body?.detail?.mailAddress ?? "",
+            password: getResult.body?.detail?.password ?? "",
+            position: getResult.body?.detail?.position ?? "",
+            version: getResult.body?.detail?.version ?? "",
+        });
+        setLoading(false);
     }
 
     useEffect(() => {
