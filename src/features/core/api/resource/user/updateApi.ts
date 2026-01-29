@@ -3,7 +3,7 @@ import type { HttpResult } from "@/features/core/lib/http/httpClient";
 
 export type UpdateRequest = {
     userId: string;
-    userSeq: number;
+    userSeq: string;
     joinedDate: string;
     retiredDate: string;
     sei: string;
@@ -11,7 +11,7 @@ export type UpdateRequest = {
     mailAddress: string;
     password: string;
     position: string;
-    version: number;
+    version: string;
 };
 
 export type UpdateResponse = {

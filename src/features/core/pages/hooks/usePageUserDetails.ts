@@ -14,7 +14,7 @@ type UserDetails = {
     mailAddress: string;
     password: string;
     position: string;
-    version: number;
+    version: string;
 };
 
 export const usePageUserDetails = () => {
@@ -47,7 +47,7 @@ export const usePageUserDetails = () => {
         const getResult = await getMaxSeqUserByUserIdApi({ userId: data.userId });
         setData({
             userId: getResult.body?.detail?.userId ?? "",
-            userSeq: getResult.body?.detail?.userSeq ?? "",
+            userSeq: TypeConverter.toString(getResult.body?.detail?.userSeq),
             joinedDate: getResult.body?.detail?.joinedDate ?? "",
             retiredDate: getResult.body?.detail?.retiredDate ?? "",
             sei: getResult.body?.detail?.sei ?? "",
@@ -55,7 +55,7 @@ export const usePageUserDetails = () => {
             mailAddress: getResult.body?.detail?.mailAddress ?? "",
             password: getResult.body?.detail?.password ?? "",
             position: getResult.body?.detail?.position ?? "",
-            version: getResult.body?.detail?.version ?? "",
+            version: TypeConverter.toString(getResult.body?.detail?.version),
         });
         setLoading(false);
     }
@@ -75,7 +75,7 @@ export const usePageUserDetails = () => {
             const result = await getMaxSeqUserByUserIdApi({ userId });
             setData({
                 userId: result.body?.detail?.userId ?? "",
-                userSeq: result.body?.detail?.userSeq ?? "",
+                userSeq: TypeConverter.toString(result.body?.detail?.userSeq),
                 joinedDate: result.body?.detail?.joinedDate ?? "",
                 retiredDate: result.body?.detail?.retiredDate ?? "",
                 sei: result.body?.detail?.sei ?? "",
@@ -83,7 +83,7 @@ export const usePageUserDetails = () => {
                 mailAddress: result.body?.detail?.mailAddress ?? "",
                 password: result.body?.detail?.password ?? "",
                 position: result.body?.detail?.position ?? "",
-                version: result.body?.detail?.version ?? "",
+                version: TypeConverter.toString(result.body?.detail?.version),
             });
             setLoading(false);
         };
