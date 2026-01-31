@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
 import { getMaxSeqUserByUserIdApi } from "@/features/core/api/resource/user/getMaxSeqUserByUserIdApi";
 import { updateApi } from "@/features/core/api/resource/user/updateApi";
+import { updateStateByName } from "@/features/core/lib/react/reactUtils";
 
 type UserDetails = {
     userId: string;
@@ -21,8 +22,19 @@ export const usePageUserDetails = () => {
     const params = useParams();
     const authenticatedUserService = useAuthenticatedUserService();
 
-    const [data, setData] = useState<UserDetails | null>(null);
     const [loading, setLoading] = useState(false);
+    const [data, setData] = useState<UserDetails>(() => ({
+        userId: "",
+        userSeq: "",
+        joinedDate: "",
+        retiredDate: "",
+        sei: "",
+        mei: "",
+        mailAddress: "",
+        password: "",
+        position: "",
+        version: "",
+    }));;
 
     const onClickUpdate = async () => {
         if (!data) return;
@@ -94,6 +106,7 @@ export const usePageUserDetails = () => {
     return {
         data,
         loading,
+        handleChange: updateStateByName(setData),
         onClickUpdate,
     };
 };

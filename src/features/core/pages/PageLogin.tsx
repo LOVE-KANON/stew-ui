@@ -18,19 +18,21 @@ const PageLogin = () => {
                     Login
                 </Typography>
                 <TextField
+                    name="loginId"
+                    value={pageState.data.loginId}
+                    onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                     fullWidth
                     label="ログインID"
                     margin="normal"
-                    value={pageState.loginId}
-                    onChange={(e) => pageState.setLoginId(e.target.value)}
                 />
                 <TextField
+                    name="password"
+                    value={pageState.data.password}
+                    onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
+                    type="password"
                     fullWidth
                     label="Password"
-                    type="password"
                     margin="normal"
-                    value={pageState.password}
-                    onChange={(e) => pageState.setPassword(e.target.value)}
                 />
                 <Button
                     fullWidth

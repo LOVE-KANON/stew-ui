@@ -55,6 +55,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="sei"
                         value={pageState.data.sei}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -68,6 +69,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="mei"
                         value={pageState.data.mei}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -81,6 +83,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="mailAddress"
                         value={pageState.data.mailAddress}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -94,6 +97,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="password"
                         value={pageState.data.password}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         type="password"
                         fullWidth
                         variant="outlined"
@@ -108,6 +112,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="joinedDate"
                         value={pageState.data.joinedDate}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         InputProps={{ readOnly: true }}
                         variant="outlined"
@@ -122,6 +127,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="retiredDate"
                         value={pageState.data.retiredDate}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         variant="outlined"
                         size="small"
@@ -135,6 +141,7 @@ const PageUserDetails = () => {
                     <TextField
                         name="position"
                         value={pageState.data.position}
+                        onChange={(e)=>pageState.handleChange(e.target.name, e.target.value)}
                         fullWidth
                         variant="outlined"
                         size="small"
