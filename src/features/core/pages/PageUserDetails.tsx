@@ -21,6 +21,15 @@ const PageUserDetails = () => {
 
     return (
         <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
+                <Typography
+                    variant="h5"
+                    sx={{ py: 2, fontWeight: 600, }}
+                >
+                    ユーザ詳細(更新)
+                </Typography>
+            </Grid>
+
             <Grid size={{ xs: 12, md: 6 }}>
                 <Typography variant="body1" gutterBottom>ユーザID</Typography>
                 <Box sx={{ maxWidth: 360 }}>

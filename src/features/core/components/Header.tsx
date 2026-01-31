@@ -46,7 +46,7 @@ export const Header = () => {
                                 to="/core/maintenance/user/edit/self"
                                 onClick={() => pageState.setAnchorEl(null)}
                             >
-                                ユーザ情報修正
+                                ユーザ詳細
                             </MenuItem>
                             <MenuItem>Messages</MenuItem>
                             <MenuItem onClick={pageState.onClickLogout}>
