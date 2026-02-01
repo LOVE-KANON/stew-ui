@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
-import { getMaxSeqUserByUserIdApi } from "@/features/core/api/resource/user/getMaxSeqUserByUserIdApi";
-import { updateApi } from "@/features/core/api/resource/user/updateApi";
+import { getUserApi } from "@/features/core/api/resource/user/getUserApi";
+import { updateUserApi } from "@/features/core/api/resource/user/updateUserApi";
 import { updateStateByName } from "@/features/core/lib/react/reactUtils";
 
 type UserDetails = {
@@ -40,7 +40,7 @@ export const usePageUserDetails = () => {
         if (!data) return;
 
         setLoading(true);
-        const result = await updateApi({
+        const result = await updateUserApi({
             userId: data.userId,
             userSeq: data.userSeq,
             joinedDate: data.joinedDate,
@@ -56,7 +56,7 @@ export const usePageUserDetails = () => {
             setLoading(false);
             return;
         }
-        const getResult = await getMaxSeqUserByUserIdApi({ userId: data.userId });
+        const getResult = await getUserApi({ userId: data.userId });
         setData({
             userId: getResult.body?.detail?.userId ?? "",
             userSeq: TypeConverter.toString(getResult.body?.detail?.userSeq),
@@ -84,7 +84,7 @@ export const usePageUserDetails = () => {
 
         const load = async () => {
             setLoading(true);
-            const result = await getMaxSeqUserByUserIdApi({ userId });
+            const result = await getUserApi({ userId });
             setData({
                 userId: result.body?.detail?.userId ?? "",
                 userSeq: TypeConverter.toString(result.body?.detail?.userSeq),

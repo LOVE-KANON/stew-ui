@@ -1,11 +1,11 @@
 import { httpClient } from "@/features/core/lib/http/httpClient";
 import type { HttpResult } from "@/features/core/lib/http/httpClient";
 
-export type GetMaxSeqUserByUserIdRequest = {
+export type GetUserRequest = {
     userId: string;
 };
 
-export type GetMaxSeqUserByUserIdResponse = {
+export type GetUserResponse = {
     userId: string;
     userSeq: number;
     joinedDate: string;
@@ -18,10 +18,10 @@ export type GetMaxSeqUserByUserIdResponse = {
     version: number;
 };
 
-export const getMaxSeqUserByUserIdApi = async (
-    req: GetMaxSeqUserByUserIdRequest
-): Promise<HttpResult<GetMaxSeqUserByUserIdResponse>> => {
-    return httpClient<GetMaxSeqUserByUserIdResponse>("/api/core/resource/user/getMaxSeqUserByUserId", {
+export const getUserApi = async (
+    req: GetUserRequest
+): Promise<HttpResult<GetUserResponse>> => {
+    return httpClient<GetUserResponse>("/api/core/resource/user/getUser", {
         params: req,
     });
 };

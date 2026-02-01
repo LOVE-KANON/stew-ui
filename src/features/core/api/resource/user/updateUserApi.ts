@@ -1,7 +1,7 @@
 import { httpClient } from "@/features/core/lib/http/httpClient";
 import type { HttpResult } from "@/features/core/lib/http/httpClient";
 
-export type UpdateRequest = {
+export type UpdateUserRequest = {
     userId: string;
     userSeq: string;
     joinedDate: string;
@@ -14,14 +14,14 @@ export type UpdateRequest = {
     version: string;
 };
 
-export type UpdateResponse = {
+export type UpdateUserResponse = {
     processedCount: number;
 };
 
-export const updateApi = async (
-    req: UpdateRequest
-): Promise<HttpResult<UpdateResponse>> => {
-    return httpClient<UpdateResponse>("/api/core/resource/user/update", {
+export const updateUserApi = async (
+    req: UpdateUserRequest
+): Promise<HttpResult<UpdateUserResponse>> => {
+    return httpClient<UpdateUserResponse>("/api/core/resource/user/updateUser", {
         method: "POST",
         body: req,
     });
