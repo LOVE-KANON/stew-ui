@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -28,6 +29,17 @@ export const Sidebar = () => {
             </List>
             <Divider />
             <List>
+                <ListItem key="maintenanceUser" disablePadding>
+                    <ListItemButton
+                        component={NavLink}
+                        to="/core/maintenance/user/list"
+                    >
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="ユーザメンテナンス" />
+                    </ListItemButton>
+                </ListItem>
                 {["All mail", "Trash", "Spam"].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
