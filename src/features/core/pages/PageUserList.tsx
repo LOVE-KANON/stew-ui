@@ -75,7 +75,11 @@ const PageUserList = () => {
                                     <TableCell>
                                         <Button
                                             component={RouterLink}
-                                            to={`/core/maintenance/user/edit/${item.userId}`}
+                                            to={`/core/maintenance/user/edit/${
+                                                item.userId === pageState.authenticatedUserId
+                                                    ? "self"
+                                                    : item.userId
+                                            }`}
                                             variant="text"
                                         >
                                             {item.sei}{"　"}{item.mei}

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useAuthenticatedUserService } from "@/features/core/services/useAuthenticatedUserService";
+import { getUsersApi } from "@/features/core/api/resource/user/getUsersApi";
 
 type UserListItem = {
     userId: string;
@@ -15,56 +17,44 @@ type UserList = {
 };
 
 export const usePageUserList = () => {
+    const authenticatedUserService = useAuthenticatedUserService();
 
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<UserList>(() => ({
         list: [],
     }));
 
+    const authenticatedUserId = authenticatedUserService.authenticatedUser?.userId ?? "";
+
     useEffect(() => {
+        if (authenticatedUserService.isLoading) {
+            return;
+        }
 
         const load = async () => {
             setLoading(true);
+            const result = await getUsersApi();
             setData({
-                list: [
-                    {
-                        userId: "user001",
-                        userSeq: "1",
-                        joinedDate: "20260101",
-                        sei: "山田",
-                        mei: "太郎",
-                        mailAddress: "yamada.taro@example.com",
-                        position: "管理者",
-                    },
-                    {
-                        userId: "user002",
-                        userSeq: "2",
-                        joinedDate: "20260102",
-                        sei: "佐藤",
-                        mei: "花子",
-                        mailAddress: "sato.hanako@example.com",
-                        position: "一般社員",
-                    },
-                    {
-                        userId: "user003",
-                        userSeq: "3",
-                        joinedDate: "20260103",
-                        sei: "鈴木",
-                        mei: "一郎",
-                        mailAddress: "suzuki.ichiro@example.com",
-                        position: "マネージャー",
-                    },
-                ],
+                list:
+                    result.body?.detail?.list?.map((item: Record<string, unknown>) => ({
+                        userId: item.userId ?? "",
+                        userSeq: item.userSeq ?? "",
+                        joinedDate: item.joinedDate ?? "",
+                        sei: item.sei ?? "",
+                        mei: item.mei ?? "",
+                        mailAddress: item.mailAddress ?? "",
+                        position: item.position ?? "",
+                    })) ?? [],
             });
-
             setLoading(false);
         };
 
         load();
-    }, []);
+    }, [authenticatedUserService.isLoading]);
 
     return {
         data,
         loading,
+        authenticatedUserId,
     };
 };
