@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAuthenticatedUserApi } from "@/features/core/api/usecase/auth/getAuthenticatedUserApi";
-import type { AuthenticatedUser } from "@/features/core/types/AuthenticatedUser";
+import type { GetAuthenticatedUserResponse } from "@/features/core/api/usecase/auth/getAuthenticatedUserApi";
 
 export const useAuthenticatedUserService = () => {
     const query = useQuery({
         queryKey: ["authenticatedUser"],
         queryFn: getAuthenticatedUserApi,
         retry: false,
-        select: (result): AuthenticatedUser | undefined => {
+        select: (result): GetAuthenticatedUserResponse | undefined => {
             if (result.status === 401) {
                 return undefined;
             }
